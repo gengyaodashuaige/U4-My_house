@@ -7,6 +7,7 @@ import com.team.house.entity.Users;
 import com.team.house.service.HouseService;
 import com.team.house.util.FileUploadUtil;
 import com.team.house.util.PageUtil;
+import com.team.house.util.SearchCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -142,6 +143,18 @@ public class HouseController {
             e.printStackTrace();
         }
         return "error";
+    }
+
+    //分页查询所有的出租房
+    @RequestMapping("showAllHouse")  //pageUtil只用接收页码即可，page
+    public String showAllHouse(SearchCondition searchCondition, Model model){
+        //设置页大小    选择设置默认值
+        searchCondition.setRows(5);
+        //调用业务层，获取数据
+        PageInfo<House> pageInfo = houseService.findAllHouse(searchCondition);
+        //将数据填充到作用域
+        model.addAttribute("pageInfo",pageInfo);
+        return "page/list";
     }
 
 }

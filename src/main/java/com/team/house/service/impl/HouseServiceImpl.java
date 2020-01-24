@@ -6,6 +6,7 @@ import com.team.house.entity.House;
 import com.team.house.mapper.HouseMapper;
 import com.team.house.service.HouseService;
 import com.team.house.util.PageUtil;
+import com.team.house.util.SearchCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,5 +70,13 @@ public class HouseServiceImpl implements HouseService {
         house.setId(houseId);  //条件
         house.setIspass(passState);  //更新状态
         return houseMapper.updateByPrimaryKeySelective(house);
+    }
+
+    //分页查询所有的出租房
+    public PageInfo<House> findAllHouse(SearchCondition searchCondition) {
+        //开启分页
+        PageHelper.startPage(searchCondition.getPage(),searchCondition.getRows());
+        List<House> list = houseMapper.findAllHouse(searchCondition);
+        return new PageInfo<House>(list);
     }
 }

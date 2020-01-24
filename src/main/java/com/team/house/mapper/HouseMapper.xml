@@ -278,4 +278,39 @@
     left join district on street.DISTRICT_ID=district.ID
     where isdel=0 and ispass=1 order by pubdate desc
   </select>
+
+  <!--分页查询所有的出租房
+      查询已审核 和 未删除的出租房
+  -->
+  <select id="findAllHouse" resultType="House" parameterType="com.team.house.util.SearchCondition">
+    select house.id,user_id,type_id,title,price,pubdate,floorage,contact,street_id,path,
+    type.NAME as tname,
+    street.NAME as sname,
+    district.NAME as dname,
+    ispass
+    from house
+    left join type on house.TYPE_ID=type.ID
+    left join street on house.STREET_ID=street.ID
+    left join district on street.DISTRICT_ID=district.ID
+    where isdel=0 and ispass=1
+    <!--拼接模糊查询条件-->
+    <if test="title!=null">
+        and title like concat('%',#{title},'%')
+    </if>
+    <if test="did!=null">
+        and district_id=#{did}
+    </if>
+    <if test="sid!=null">
+        and street_id=#{sid}
+    </if>
+    <if test="tid!=null">
+        and type_id=#{tid}
+    </if>
+    <if test="startPrice!=null">
+        and price > #{startPrice}
+    </if>
+    <if test="endPrice!=null">
+        and price &lt; #{endPrice}
+    </if>
+  </select>
 </mapper>

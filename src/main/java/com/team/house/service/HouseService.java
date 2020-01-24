@@ -4,6 +4,7 @@ package com.team.house.service;
 import com.github.pagehelper.PageInfo;
 import com.team.house.entity.House;
 import com.team.house.util.PageUtil;
+import com.team.house.util.SearchCondition;
 
 import java.util.List;
 
@@ -66,4 +67,12 @@ public interface HouseService {
      * @return  影响行数
      */
     public int PassHouse(String houseId,Integer passState);
+
+    /**
+     * 分页查询所有的出租房
+     * @param searchCondition  分页参数+封装的实体
+     * @return  出租房实体
+     */
+//    public PageInfo<House> findAllHouse(PageUtil pageUtil);
+    public PageInfo<House> findAllHouse(SearchCondition searchCondition);
 }

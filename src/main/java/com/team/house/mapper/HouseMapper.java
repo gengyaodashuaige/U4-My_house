@@ -2,6 +2,7 @@ package com.team.house.mapper;
 
 import com.team.house.entity.House;
 import com.team.house.entity.HouseExample;
+import com.team.house.util.SearchCondition;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -32,4 +33,7 @@ public interface HouseMapper {
 
     //查询所有通过审核的出租房
     List<House> getPassHouseAll();
+
+    //分页查询所有的出租房(模糊查询)
+    List<House> findAllHouse(SearchCondition searchCondition);
 }
