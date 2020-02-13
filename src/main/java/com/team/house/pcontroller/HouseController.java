@@ -157,4 +157,14 @@ public class HouseController {
         return "page/list";
     }
 
+    //查询出租房详细信息
+    @RequestMapping("findHouse")
+    public String showHouseAll(String id, Model model){
+        //调用业务层，获取数据
+        House house = houseService.findHouse(id);
+        //将数据填充到作用域
+        model.addAttribute("house",house);
+        return "page/details";
+    }
+
 }

@@ -36,4 +36,7 @@ public interface HouseMapper {
 
     //分页查询所有的出租房(模糊查询)
     List<House> findAllHouse(SearchCondition searchCondition);
+
+    //查询出租房详细信息
+    House findHouseByID(String id);
 }

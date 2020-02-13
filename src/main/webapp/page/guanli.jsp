@@ -11,7 +11,8 @@ rel=stylesheet type=text/css href="../css/style.css">
 <BODY>
 <DIV id=header class=wrap>
 <DIV id=logo><IMG src="../images/logo.gif"></DIV>
-<DIV class=search><LABEL class="ui-green searchs"><a href="fabu.jsp" title="">发布房屋信息</a></LABEL>
+<DIV class=search><LABEL class="ui-green searchs"><a href="fabu.jsp" title="">发布出租房</a></LABEL>
+<LABEL class="ui-green searchs"><a href="/page/showAllHouse" title="">我要租房</a></LABEL>
 <LABEL class=ui-green><INPUT onclick='document.location="login.jsp"' value="退       出" type=button name=search></LABEL>
   欢迎：${sessionScope["loginInfo"].name}
 </DIV></DIV>
@@ -21,13 +22,13 @@ rel=stylesheet type=text/css href="../css/style.css">
       <TBODY>
         <c:forEach items="${pageInfo.list}" var="h">
           <TR>
-            <TD class=house-thumb><SPAN><A href="details.htm" target="_blank">${h.path}
+            <TD class=house-thumb><SPAN><A href="/page/findHouse?id=${h.id}" target="_blank">${h.path}
                 <img src="http://localhost:80/${h.path}" width="100" height="75" alt="">
                 <%--<img src="f:\\images\\2323.jpg" width="100" height="75" alt="">--%>
             </A></SPAN></TD>
             <TD>
               <DL>
-                <DT><A href="details.htm" target="_blank">${h.title}</A></DT>
+                <DT><A href="details.jsp" target="_blank">${h.title}</A></DT>
                 <DD>${h.id}</DD>
                 <DD>${h.dname}${h.sname},${h.floorage}平米</DD>
                 <DD>价格：${h.price}----户型：${h.tname}<BR>联系方式：${h.contact} </DD>

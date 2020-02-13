@@ -60,8 +60,6 @@ function backPass(id) {
     },"json");
 }
 
-
-
 //实现datagrid绑定查询条件
 function searchUser() {
     var inputName=$("#inputName").val();
@@ -74,3 +72,24 @@ function searchUser() {
         tel: inputTel
     });
 }
+
+/*
+//打开添加窗口
+function goAdd() {
+    //打开对话框
+    $("#AddDialog").dialog("open").dialog('setTitle',"添加类型");
+}
+
+//关闭弹窗  //通过dialogId关闭窗口
+function CloseDialog(dialogId){
+    $("#"+dialogId).dialog("close");
+}
+//编辑列中的修改
+function goEdit(id) {
+    $("#upDialog").dialog("open").dialog('setTitle',"编辑类型");
+    //发送异步请求，回显
+    $.post("getType",{"id":id},function (data) {
+        //data对象的属性名和表单对象的名称相同，即可回显
+        $("#upDialogForm").form('load',data);
+    },"json")
+}*/

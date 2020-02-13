@@ -84,14 +84,14 @@
   <TBODY>
   <c:forEach items="${pageInfo.list}" var="p">
   <TR>
-    <TD class=house-thumb><span><A href="details.htm" target="_blank">
+    <TD class=house-thumb><span><a href="/page/findHouse?id=${p.id}" target="_blank">
           <img src="http://localhost:80/${p.path}" width="100" height="75" alt=""></a></span>
     </TD>
       <TD>
       <DL>
-        <DT><A href="details.htm" target="_blank">${p.title}</A></DT>
+        <DT><a href="/page/findHouse?id=${p.id}" target="_blank">${p.title}</a></DT>
         <DD>${p.dname}${p.sname},${p.floorage}平米<BR>联系方式：${p.contact} </DD></DL></TD>
-    <TD class=house-type>${p.tname}</TD>
+    <TD class=house-type>${p.tname}${p.id}ZZ</TD>
     <TD class=house-price><SPAN>${p.price}</SPAN>元/月</TD></TR>
   </c:forEach>
   <TR>无租房信息</TR></TBODY></TABLE>

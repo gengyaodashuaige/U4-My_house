@@ -313,4 +313,18 @@
         and price &lt; #{endPrice}
     </if>
   </select>
+
+    <!--查询出租房详细信息-->
+    <select id="findHouseByID" parameterType="java.lang.String" resultType="House">
+        select user_id,type_id,title,price,pubdate,floorage,contact,street_id,path,description,
+        type.NAME as tname,
+        street.NAME as sname,
+        district.NAME as dname,
+        ispass
+        from house
+        left join type on house.TYPE_ID=type.ID
+        left join street on house.STREET_ID=street.ID
+        left join district on street.DISTRICT_ID=district.ID
+        where isdel=0 and ispass=1 and house.id=#{id};
+    </select>
 </mapper>

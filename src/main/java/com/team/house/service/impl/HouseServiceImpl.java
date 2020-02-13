@@ -79,4 +79,9 @@ public class HouseServiceImpl implements HouseService {
         List<House> list = houseMapper.findAllHouse(searchCondition);
         return new PageInfo<House>(list);
     }
+
+    //查询出租房详细信息
+    public House findHouse(String id) {
+        return houseMapper.findHouseByID(id);
+    }
 }

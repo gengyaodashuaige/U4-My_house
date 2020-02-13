@@ -75,4 +75,11 @@ public interface HouseService {
      */
 //    public PageInfo<House> findAllHouse(PageUtil pageUtil);
     public PageInfo<House> findAllHouse(SearchCondition searchCondition);
+
+    /**
+     * 查询出租房详细信息
+     * @param id 出租房id
+     * @return
+     */
+    public House findHouse(String id);
 }
